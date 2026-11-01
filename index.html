@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Happy Birthday, Tasneem</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Pinyon+Script&display=swap" rel="stylesheet">
+<style>
+  :root {
+    color-scheme: light;
+    --bg-1: #fff3f7;
+    --bg-2: #ffd6e4;
+    --bg-3: #ffc0d5;
+    --ink: #5a1d3a;
+    --ink-soft: #8a4a66;
+    --rose: #ec7fa5;
+    --rose-deep: #b83266;
+    --btn-bg: #b83266;
+    --btn-ink: #ffffff;
+    --ring: #5a1d3a;
+    --card: rgba(255, 255, 255, 0.72);
+    --card-edge: rgba(236, 127, 165, 0.4);
+    --tier-a: #ff9fbd;
+    --tier-b: #ffc2d6;
+    --tier-c: #ff8fb3;
+    --icing: #fff6f9;
+    --band: #e8c48a;
+    --candle: #ffffff;
+    --candle-band: #ff7aa5;
+    --plate: #ffffff;
+    --plate-edge: #f6c3d4;
+    --smoke: #b08a9a;
+    --serif: 'Cormorant Garamond', 'Iowan Old Style', Georgia, serif;
+    --script: 'Pinyon Script', 'Snell Roundhand', 'Brush Script MT', cursive;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      color-scheme: dark;
+      --bg-1: #2b1020;
+      --bg-2: #3f1730;
+      --bg-3: #55193c;
+      --ink: #ffe4ed;
+      --ink-soft: #e9b4c9;
+      --rose: #ff8fb3;
+      --rose-deep: #ff9fbf;
+      --btn-bg: #ff93b6;
+      --btn-ink: #3a0f24;
+      --ring: #ffe4ed;
+      --card: rgba(255, 255, 255, 0.07);
+      --card-edge: rgba(255, 143, 179, 0.35);
+      --tier-a: #f27aa2;
+      --tier-b: #ff9fbd;
+      --tier-c: #e8668f;
+      --icing: #ffe9f0;
+      --plate: #f7dbe5;
+      --plate-edge: #c9809a;
+      --smoke: #d9b3c4;
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+
+  body {
+    min-height: 100vh;
+    min-height: 100svh;
+    font-family: var(--serif);
+    font-weight: 500;
+    color: var(--ink);
+    background:
+      radial-gradient(900px 600px at 15% 0%, var(--bg-3), transparent 60%),
+      radial-gradient(800px 600px at 100% 100%, var(--bg-2), transparent 55%),
+      var(--bg-1);
+    background-attachment: fixed;
+    overflow-x: hidden;
+  }
+
+  #fx {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  main {
+    position: relative;
+    z-index: 1;
+    max-width: 640px;
+    margin: 0 auto;
+    padding: clamp(28px, 7vw, 72px) 20px 64px;
+  }
+
+  /* ---------- Pages ---------- */
+  .page {
+    --base: .15s;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+  .page.active { display: flex; }
+  #p2, #p3 { --base: 1.1s; }
+
+  /* Shared blur-in reveal. Each element sets its own --i. */
+  .reveal {
+    opacity: 0;
+    filter: blur(10px);
+    transform: translateY(14px);
+  }
+  .page.active .reveal {
+    animation: wordIn 1s cubic-bezier(.2, .7, .2, 1) forwards;
+    animation-delay: calc(var(--base) + var(--i, 0) * .26s);
+  }
+  @keyframes wordIn {
+    to { opacity: 1; filter: blur(0); transform: none; }
+  }
+
+  .script {
+    margin: 0;
+    font-family: var(--script);
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--rose-deep);
+  }
+  h1.script { font-size: clamp(3.4rem, 15vw, 7rem); line-height: 1.05; }
+  h2.script { font-size: clamp(3rem, 12vw, 4.8rem); }
+  h1 .w { display: inline-block; }
+
+  .to {
+    margin: .35rem 0 0;
+    font-size: clamp(1.7rem, 6.5vw, 2.5rem);
+    font-style: italic;
+    font-weight: 500;
+  }
+  .to .who { font-weight: 600; color: var(--rose-deep); }
+
+  .kicker {
+    margin: .4rem 0 0;
+    font-size: clamp(1.25rem, 4.5vw, 1.5rem);
+    font-style: italic;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- Page 1: cake ---------- */
+  .stage {
+    margin-top: clamp(8px, 3vw, 24px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    animation: fadeIn 1.2s ease forwards;
+    animation-delay: 1.1s;
+  }
+  @keyframes fadeIn { to { opacity: 1; } }
+
+  #cake {
+    width: min(82vw, 360px);
+    height: auto;
+    overflow: visible;
+    filter: drop-shadow(0 18px 18px rgba(184, 50, 102, 0.18));
+  }
+  .plate { fill: var(--plate); stroke: var(--plate-edge); stroke-width: 2; }
+  .tier-a { fill: var(--tier-a); }
+  .tier-b { fill: var(--tier-b); }
+  .tier-c { fill: var(--tier-c); }
+  .icing { fill: var(--icing); }
+  .band { fill: var(--band); }
+  .band-dot { fill: #fff; opacity: .85; }
+  .candle-body { fill: var(--candle); }
+  .candle-band { fill: var(--candle-band); }
+  .wick { stroke: #6b3a4c; stroke-width: 2; stroke-linecap: round; }
+
+  .candle { cursor: pointer; outline: none; }
+  .candle:focus-visible .hit {
+    stroke: var(--ring);
+    stroke-width: 2;
+    stroke-dasharray: 4 3;
+    rx: 8;
+  }
+  .hit { fill: transparent; }
+  #cake.locked .candle { pointer-events: none; }
+
+  .flame {
+    opacity: 0;
+    transform: scale(0.1);
+    transform-box: fill-box;
+    transform-origin: 50% 100%;
+    transition: opacity .35s ease, transform .45s cubic-bezier(.3, 1.6, .5, 1);
+  }
+  .flick {
+    transform-box: fill-box;
+    transform-origin: 50% 100%;
+    animation: flicker 1.3s ease-in-out infinite;
+  }
+  .candle:nth-of-type(2) .flick { animation-delay: -.4s; }
+  .candle:nth-of-type(3) .flick { animation-delay: -.8s; }
+  .lit .flame { opacity: 1; transform: scale(1); }
+  @keyframes flicker {
+    0%, 100% { transform: scale(1, 1) rotate(0deg); }
+    25% { transform: scale(.94, 1.06) rotate(-2.5deg); }
+    55% { transform: scale(1.04, .95) rotate(2deg); }
+    80% { transform: scale(.97, 1.04) rotate(-1deg); }
+  }
+  .glow { opacity: 0; transition: opacity .5s ease; }
+  .lit .glow { opacity: 1; }
+
+  .smoke { opacity: 0; fill: none; stroke: var(--smoke); stroke-width: 2.2; stroke-linecap: round; }
+  .puff .smoke { animation: smoke 1.4s ease-out forwards; }
+  @keyframes smoke {
+    0% { opacity: .8; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-22px); }
+  }
+
+  .btn {
+    margin-top: 22px;
+    font: inherit;
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: .01em;
+    color: var(--btn-ink);
+    background: var(--btn-bg);
+    border: 0;
+    border-radius: 999px;
+    padding: .8em 1.8em;
+    cursor: pointer;
+    box-shadow: 0 10px 24px rgba(184, 50, 102, 0.28);
+    transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease;
+  }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 14px 28px rgba(184, 50, 102, 0.34); }
+  .btn:active { transform: translateY(0) scale(.98); }
+  .btn:focus-visible { outline: 3px solid var(--ring); outline-offset: 4px; }
+  .btn:disabled { opacity: .65; cursor: default; transform: none; }
+  .btn.ghost {
+    font-size: 1.05rem;
+    color: var(--rose-deep);
+    background: transparent;
+    box-shadow: inset 0 0 0 1.5px var(--rose);
+    padding: .55em 1.4em;
+  }
+  .btn.ghost:hover { background: var(--card); box-shadow: inset 0 0 0 1.5px var(--rose-deep); }
+
+  .hint {
+    margin: 14px 0 0;
+    min-height: 1.5em;
+    font-style: italic;
+    color: var(--ink-soft);
+    font-size: 1.1rem;
+  }
+
+  /* ---------- Page 2: poem + signature ---------- */
+  .poem { margin-top: 2rem; }
+  .stanza { margin: 0 0 1.6rem; }
+  .line {
+    display: block;
+    font-size: clamp(1.35rem, 4.7vw, 1.7rem);
+    font-style: italic;
+    line-height: 1.55;
+  }
+
+  .sign {
+    width: 100%;
+    max-width: 460px;
+    margin-top: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .sign-title {
+    margin: 0 0 14px;
+    font-size: clamp(1.25rem, 4.5vw, 1.5rem);
+    font-style: italic;
+    color: var(--ink-soft);
+  }
+  .pad {
+    position: relative;
+    width: 100%;
+    height: 190px;
+    background: var(--card);
+    border: 1px solid var(--card-edge);
+    border-radius: 24px;
+    box-shadow: 0 18px 40px rgba(184, 50, 102, 0.14);
+    overflow: hidden;
+    transition: box-shadow .4s ease, border-color .4s ease;
+  }
+  .pad.done { border-color: var(--rose-deep); box-shadow: 0 0 0 4px rgba(236, 127, 165, .25); }
+  #sig {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    touch-action: none;
+    cursor: crosshair;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  .baseline {
+    position: absolute;
+    left: 9%; right: 9%; bottom: 44px;
+    border-bottom: 2px dashed var(--rose);
+    opacity: .6;
+    pointer-events: none;
+  }
+  .xmark {
+    position: absolute;
+    left: 5%; bottom: 46px;
+    font-size: 1.6rem;
+    line-height: 1;
+    color: var(--rose);
+    pointer-events: none;
+  }
+  .bar {
+    width: 100%;
+    height: 4px;
+    margin-top: 14px;
+    border-radius: 4px;
+    background: var(--card-edge);
+    overflow: hidden;
+  }
+  .bar i {
+    display: block;
+    height: 100%;
+    width: 0;
+    background: var(--rose-deep);
+    border-radius: 4px;
+    transition: width .15s linear;
+  }
+  .sign .btn.ghost { margin-top: 12px; }
+
+  /* ---------- Page 3: new year ---------- */
+  .wishes { margin-top: 2rem; }
+  .wishes p {
+    margin: 0;
+    font-size: clamp(1.4rem, 5vw, 1.8rem);
+    font-style: italic;
+    line-height: 1.45;
+  }
+  .wishes p::after {
+    content: "";
+    display: block;
+    width: 8px; height: 14px;
+    margin: 1.1rem auto 1.1rem;
+    background: var(--rose);
+    border-radius: 60% 0 60% 0;
+    transform: rotate(-20deg);
+    opacity: .7;
+  }
+  .final {
+    margin-top: .6rem;
+    font-size: clamp(2.4rem, 10vw, 3.6rem);
+  }
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 1.4rem;
+  }
+  .row .btn { margin-top: 0; }
+
+  /* ---------- Pink curtain ---------- */
+  #curtain {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  #curtain.closed { pointer-events: auto; }
+  .cp {
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 51%;
+    transition: transform .9s cubic-bezier(.75, 0, .25, 1);
+    background:
+      repeating-linear-gradient(90deg,
+        rgba(255,255,255,0) 0 26px,
+        rgba(255,255,255,.2) 40px,
+        rgba(255,255,255,0) 58px,
+        rgba(150,30,80,.14) 78px,
+        rgba(150,30,80,0) 96px),
+      linear-gradient(180deg, #ffa6c3 0%, #f4739f 55%, #e45a8e 100%);
+    box-shadow: 0 0 60px rgba(90, 29, 58, .35);
+  }
+  .cp.l { left: 0; transform: translateX(-103%); border-right: 5px solid #e8c48a; }
+  .cp.r { right: 0; transform: translateX(103%); border-left: 5px solid #e8c48a; }
+  #curtain.closed .cp { transform: translateX(0); }
+  .cheart {
+    position: absolute;
+    left: 50%; top: 50%;
+    width: 64px; height: 64px;
+    margin: -32px 0 0 -32px;
+    fill: #fff6f9;
+    opacity: 0;
+    transform: scale(.5);
+    transition: opacity .5s ease .55s, transform .6s cubic-bezier(.3, 1.6, .5, 1) .55s;
+    filter: drop-shadow(0 6px 10px rgba(90, 29, 58, .3));
+  }
+  #curtain.closed .cheart { opacity: 1; transform: scale(1); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .page.active .reveal { animation-duration: .01s; animation-delay: 0s; }
+    .stage { animation-duration: .01s; animation-delay: 0s; }
+    .flick, .puff .smoke { animation: none; }
+    .flame, .cp, .cheart { transition-duration: .01s; transition-delay: 0s; }
+  }
+</style>
+</head>
+<body>
+<canvas id="fx" aria-hidden="true"></canvas>
+
+<main>
+
+  <!-- PAGE 1: candles -->
+  <section id="p1" class="page active">
+    <h1 class="script" aria-label="Happy Birthday">
+      <span class="w reveal" style="--i:0" aria-hidden="true">Happy</span>
+      <span class="w reveal" style="--i:1" aria-hidden="true">Birthday</span>
+    </h1>
+    <p class="to reveal" style="--i:2">to <span class="who">Tasneem</span></p>
+
+    <div class="stage">
+      <svg id="cake" viewBox="0 0 320 300" role="group" aria-label="A pink three-tier cake with three candles">
+        <defs>
+          <radialGradient id="glow">
+            <stop offset="0%" stop-color="#ffd35c" stop-opacity=".65"/>
+            <stop offset="100%" stop-color="#ffd35c" stop-opacity="0"/>
+          </radialGradient>
+          <linearGradient id="flameOuter" x1="0" y1="1" x2="0" y2="0">
+            <stop offset="0%" stop-color="#ff8a3d"/>
+            <stop offset="100%" stop-color="#ffd35c"/>
+          </linearGradient>
+        </defs>
+
+        <ellipse class="plate" cx="160" cy="276" rx="150" ry="14"/>
+        <rect class="tier-a" x="36" y="198" width="248" height="76" rx="10"/>
+        <rect class="tier-b" x="66" y="150" width="188" height="52" rx="10"/>
+        <rect class="tier-c" x="96" y="106" width="128" height="48" rx="10"/>
+        <rect class="band" x="36" y="244" width="248" height="9"/>
+        <g id="bandDots"></g>
+        <g id="deco"></g>
+
+        <g id="candles">
+          <g class="candle" tabindex="0" role="button" aria-pressed="false" aria-label="Candle 1">
+            <rect class="hit" x="106" y="26" width="28" height="84"/>
+            <rect class="candle-body" x="115" y="72" width="10" height="36" rx="3"/>
+            <rect class="candle-band" x="115" y="82" width="10" height="5"/>
+            <rect class="candle-band" x="115" y="94" width="10" height="5"/>
+            <line class="wick" x1="120" y1="72" x2="120" y2="66"/>
+            <g transform="translate(120 66)">
+              <circle class="glow" cx="0" cy="-16" r="26" fill="url(#glow)"/>
+              <g class="flame"><g class="flick">
+                <path d="M0 0 C-9 -8 -7 -20 0 -32 C7 -20 9 -8 0 0Z" fill="url(#flameOuter)"/>
+                <path d="M0 -1 C-4 -6 -3 -12 0 -18 C3 -12 4 -6 0 -1Z" fill="#fff6c9"/>
+              </g></g>
+              <path class="smoke" d="M0 -4 C6 -12 -6 -18 0 -28"/>
+            </g>
+          </g>
+
+          <g class="candle" tabindex="0" role="button" aria-pressed="false" aria-label="Candle 2">
+            <rect class="hit" x="146" y="26" width="28" height="84"/>
+            <rect class="candle-body" x="155" y="72" width="10" height="36" rx="3"/>
+            <rect class="candle-band" x="155" y="82" width="10" height="5"/>
+            <rect class="candle-band" x="155" y="94" width="10" height="5"/>
+            <line class="wick" x1="160" y1="72" x2="160" y2="66"/>
+            <g transform="translate(160 66)">
+              <circle class="glow" cx="0" cy="-16" r="26" fill="url(#glow)"/>
+              <g class="flame"><g class="flick">
+                <path d="M0 0 C-9 -8 -7 -20 0 -32 C7 -20 9 -8 0 0Z" fill="url(#flameOuter)"/>
+                <path d="M0 -1 C-4 -6 -3 -12 0 -18 C3 -12 4 -6 0 -1Z" fill="#fff6c9"/>
+              </g></g>
+              <path class="smoke" d="M0 -4 C6 -12 -6 -18 0 -28"/>
+            </g>
+          </g>
+
+          <g class="candle" tabindex="0" role="button" aria-pressed="false" aria-label="Candle 3">
+            <rect class="hit" x="186" y="26" width="28" height="84"/>
+            <rect class="candle-body" x="195" y="72" width="10" height="36" rx="3"/>
+            <rect class="candle-band" x="195" y="82" width="10" height="5"/>
+            <rect class="candle-band" x="195" y="94" width="10" height="5"/>
+            <line class="wick" x1="200" y1="72" x2="200" y2="66"/>
+            <g transform="translate(200 66)">
+              <circle class="glow" cx="0" cy="-16" r="26" fill="url(#glow)"/>
+              <g class="flame"><g class="flick">
+                <path d="M0 0 C-9 -8 -7 -20 0 -32 C7 -20 9 -8 0 0Z" fill="url(#flameOuter)"/>
+                <path d="M0 -1 C-4 -6 -3 -12 0 -18 C3 -12 4 -6 0 -1Z" fill="#fff6c9"/>
+              </g></g>
+              <path class="smoke" d="M0 -4 C6 -12 -6 -18 0 -28"/>
+            </g>
+          </g>
+        </g>
+      </svg>
+
+      <button id="main-btn" class="btn" type="button">Light the candles</button>
+      <p id="hint" class="hint" aria-live="polite">Tap a candle, or use the button.</p>
+    </div>
+  </section>
+
+  <!-- PAGE 2: poem + signature -->
+  <section id="p2" class="page">
+    <h2 class="script reveal" style="--i:0">Tasneem</h2>
+    <p class="kicker reveal" style="--i:1">The most beautiful girl in the world</p>
+
+    <div class="poem">
+      <p class="stanza">
+        <span class="line reveal" style="--i:2">Some people feel like morning light,</span>
+        <span class="line reveal" style="--i:3">so soft, so warm, so kind, so bright.</span>
+        <span class="line reveal" style="--i:4">You walk in, and the day feels new,</span>
+        <span class="line reveal" style="--i:5">and every place is lovely with you.</span>
+      </p>
+      <p class="stanza">
+        <span class="line reveal" style="--i:6">Your smile is the prettiest thing I know,</span>
+        <span class="line reveal" style="--i:7">it makes the little flowers grow.</span>
+        <span class="line reveal" style="--i:8">Your gentle heart, your caring ways,</span>
+        <span class="line reveal" style="--i:9">bring sunshine to the darkest days.</span>
+      </p>
+      <p class="stanza">
+        <span class="line reveal" style="--i:10">No star can shine the way you do,</span>
+        <span class="line reveal" style="--i:11">no rose is half as sweet as you.</span>
+        <span class="line reveal" style="--i:12">The most beautiful, inside and out,</span>
+        <span class="line reveal" style="--i:13">that is what this day is about.</span>
+      </p>
+    </div>
+
+    <div id="sign" class="sign reveal" style="--i:15">
+      <p class="sign-title">Sign here, Tasneem, and open your wishes for the new year.</p>
+      <div id="pad" class="pad">
+        <canvas id="sig" role="img" aria-label="Signature pad. Draw your name with a pen, your finger, or a mouse."></canvas>
+        <span class="xmark" aria-hidden="true">&times;</span>
+        <span class="baseline" aria-hidden="true"></span>
+      </div>
+      <div class="bar" aria-hidden="true"><i id="bar"></i></div>
+      <p id="sig-status" class="hint" aria-live="polite">Write your name with a pen or your finger.</p>
+      <button id="sig-clear" class="btn ghost" type="button">Clear</button>
+    </div>
+  </section>
+
+  <!-- PAGE 3: new year -->
+  <section id="p3" class="page">
+    <h2 class="script reveal" style="--i:0">Your New Year</h2>
+    <p class="kicker reveal" style="--i:1">Little words for the year ahead</p>
+
+    <div class="wishes">
+      <p class="reveal" style="--i:3">This new year is yours. Start it with a big smile.</p>
+      <p class="reveal" style="--i:4">Believe in yourself. You are stronger than you think.</p>
+      <p class="reveal" style="--i:5">Dream big, and take one small step every day.</p>
+      <p class="reveal" style="--i:6">Be proud of how far you have come.</p>
+      <p class="reveal" style="--i:7">Be kind to yourself, and never stop learning.</p>
+      <p class="reveal" style="--i:8">Good things are coming your way. Be ready for them.</p>
+      <p class="reveal" style="--i:9">Keep shining. The world is lucky to have you.</p>
+    </div>
+
+    <p class="script final reveal" style="--i:11">Happy Birthday, Tasneem!</p>
+
+    <div class="row reveal" style="--i:12">
+      <button id="again-btn" class="btn" type="button">Celebrate again</button>
+      <button id="restart-btn" class="btn ghost" type="button">Start over</button>
+    </div>
+  </section>
+
+</main>
+
+<!-- Pink curtain used between pages -->
+<div id="curtain" aria-hidden="true">
+  <div class="cp l"></div>
+  <div class="cp r"></div>
+  <svg class="cheart" viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 2.7 5 6 5c2 0 3.4 1.1 4 2.3h4C14.6 6.1 16 5 18 5c3.3 0 5.1 3.4 3.6 6.8C19.5 16.4 12 21 12 21z"/></svg>
+</div>
+
+<script>
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const $ = (s) => document.querySelector(s);
+
+  /* ---------- Cake decoration (generated) ---------- */
+  const NS = 'http://www.w3.org/2000/svg';
+  const mk = (tag, attrs) => {
+    const e = document.createElementNS(NS, tag);
+    for (const k in attrs) e.setAttribute(k, attrs[k]);
+    return e;
+  };
+  const deco = $('#deco');
+  [[36, 198, 248, 10], [66, 150, 188, 9], [96, 106, 128, 8]].forEach(([x, y, w, r]) => {
+    deco.appendChild(mk('rect', { x, y, width: w, height: 14, rx: 10, class: 'icing' }));
+    const count = Math.round(w / (r * 1.9));
+    const step = w / count;
+    for (let i = 0; i < count; i++) {
+      deco.appendChild(mk('circle', { cx: x + step * (i + 0.5), cy: y + 13, r: r * 0.66, class: 'icing' }));
+    }
+  });
+  const dots = $('#bandDots');
+  for (let x = 46; x < 284; x += 14) dots.appendChild(mk('circle', { cx: x, cy: 248.5, r: 1.8, class: 'band-dot' }));
+  const sprinkleColors = ['#e8c48a', '#ffffff', '#b83266', '#ffd0df'];
+  [[46, 226, 232, 14], [76, 172, 168, 20], [106, 130, 108, 14]].forEach(([x, y, w, h]) => {
+    for (let i = 0; i < 9; i++) {
+      const sx = x + Math.random() * w, sy = y + Math.random() * h;
+      deco.appendChild(mk('rect', {
+        x: sx, y: sy, width: 7, height: 2.6, rx: 1.3,
+        fill: sprinkleColors[(Math.random() * sprinkleColors.length) | 0],
+        transform: `rotate(${(Math.random() * 180) | 0} ${sx + 3.5} ${sy + 1.3})`
+      }));
+    }
+  });
+
+  /* ---------- Canvas: petals, confetti, sparkles ---------- */
+  const cv = $('#fx');
+  const ctx = cv.getContext('2d');
+  let W = 0, H = 0;
+  function resize() {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = innerWidth; H = innerHeight;
+    cv.width = W * dpr; cv.height = H * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  addEventListener('resize', resize);
+  resize();
+
+  const PETAL = ['#ffb3cb', '#ff94b8', '#ffd0df', '#f7a1bf'];
+  const CONFETTI = ['#ff8fb3', '#ffc2d6', '#e0558a', '#ffffff', '#e8c48a', '#b83266'];
+  const rnd = (a, b) => a + Math.random() * (b - a);
+  const pick = (arr) => arr[(Math.random() * arr.length) | 0];
+
+  function newPetal(init) {
+    return {
+      x: rnd(0, W), y: init ? rnd(0, H) : -20,
+      s: rnd(8, 17), vy: rnd(0.25, 0.7), ph: rnd(0, 6.28), sw: rnd(0.4, 1.2),
+      r: rnd(0, 6.28), vr: rnd(-0.02, 0.02), c: pick(PETAL), a: rnd(0.35, 0.7)
+    };
+  }
+  const petals = reduce ? [] : Array.from({ length: innerWidth < 600 ? 14 : 24 }, () => newPetal(true));
+  const parts = [];
+
+  function drawPetal(p) {
+    const s = p.s;
+    ctx.save();
+    ctx.translate(p.x, p.y);
+    ctx.rotate(p.r);
+    ctx.globalAlpha = p.a;
+    ctx.fillStyle = p.c;
+    ctx.beginPath();
+    ctx.moveTo(0, -s);
+    ctx.bezierCurveTo(s * 0.8, -s * 0.4, s * 0.6, s * 0.7, 0, s);
+    ctx.bezierCurveTo(-s * 0.6, s * 0.7, -s * 0.8, -s * 0.4, 0, -s);
+    ctx.fill();
+    ctx.restore();
+  }
+  function drawHeart(s) {
+    ctx.beginPath();
+    ctx.moveTo(0, s * 0.35);
+    ctx.bezierCurveTo(-s, -s * 0.3, -s * 0.5, -s, 0, -s * 0.45);
+    ctx.bezierCurveTo(s * 0.5, -s, s, -s * 0.3, 0, s * 0.35);
+    ctx.fill();
+  }
+  function drawStar(s) {
+    ctx.beginPath();
+    ctx.moveTo(0, -s); ctx.quadraticCurveTo(s * 0.15, -s * 0.15, s, 0);
+    ctx.quadraticCurveTo(s * 0.15, s * 0.15, 0, s);
+    ctx.quadraticCurveTo(-s * 0.15, s * 0.15, -s, 0);
+    ctx.quadraticCurveTo(-s * 0.15, -s * 0.15, 0, -s);
+    ctx.fill();
+  }
+  function addPart(o) {
+    parts.push(Object.assign({ vx: 0, vy: 0, g: 0.25, drag: 0.985, life: 90, max: 90, shape: 'rect', c: '#fff', s: 8, r: 0, vr: 0, wob: rnd(0, 6) }, o));
+    if (parts.length > 700) parts.splice(0, parts.length - 700);
+  }
+  function cannon(x, y, angle, spread, n, speedMin, speedMax) {
+    for (let i = 0; i < n; i++) {
+      const a = angle + rnd(-spread, spread);
+      const sp = rnd(speedMin, speedMax);
+      addPart({
+        x, y, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp,
+        shape: Math.random() < 0.2 ? 'circle' : (Math.random() < 0.15 ? 'heart' : 'rect'),
+        c: pick(CONFETTI), s: rnd(6, 11), r: rnd(0, 6.28), vr: rnd(-0.25, 0.25),
+        life: rnd(110, 190), max: 190
+      });
+    }
+  }
+  function burst(x, y, n, shape) {
+    for (let i = 0; i < n; i++) {
+      const a = rnd(0, 6.28), sp = rnd(1.5, 5);
+      addPart({
+        x, y, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp - 1.5, g: 0.12, drag: 0.97,
+        shape, c: pick(['#ff8fb3', '#e0558a', '#ffc2d6', '#e8c48a']), s: rnd(6, 12),
+        life: rnd(50, 80), max: 80
+      });
+    }
+  }
+  function finale() {
+    if (reduce) return;
+    cannon(0, H, -Math.PI / 3, 0.35, 60, 12, 22);
+    cannon(W, H, -2 * Math.PI / 3, 0.35, 60, 12, 22);
+    cannon(W / 2, H * 0.7, -Math.PI / 2, 0.9, 70, 5, 12);
+  }
+
+  function frame() {
+    ctx.clearRect(0, 0, W, H);
+    for (const p of petals) {
+      p.ph += 0.01 * p.sw;
+      p.x += Math.sin(p.ph) * 0.6;
+      p.y += p.vy;
+      p.r += p.vr;
+      if (p.y > H + 24) Object.assign(p, newPetal(false));
+      drawPetal(p);
+    }
+    for (let i = parts.length - 1; i >= 0; i--) {
+      const p = parts[i];
+      p.vx *= p.drag; p.vy = p.vy * p.drag + p.g;
+      p.x += p.vx; p.y += p.vy; p.r += p.vr; p.wob += 0.2; p.life--;
+      if (p.life <= 0 || p.y > H + 30) { parts.splice(i, 1); continue; }
+      ctx.save();
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.r);
+      ctx.globalAlpha = Math.min(1, p.life / (p.max * 0.35));
+      ctx.fillStyle = p.c;
+      if (p.shape === 'rect') { ctx.scale(1, Math.cos(p.wob)); ctx.fillRect(-p.s / 2, -p.s / 3, p.s, p.s * 0.6); }
+      else if (p.shape === 'circle') { ctx.beginPath(); ctx.arc(0, 0, p.s / 2.4, 0, 6.28); ctx.fill(); }
+      else if (p.shape === 'heart') drawHeart(p.s * 0.6);
+      else if (p.shape === 'spark') drawStar(p.s);
+      ctx.restore();
+    }
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+
+  // Sparkle trail (not while signing)
+  let lastSpark = 0;
+  addEventListener('pointermove', (e) => {
+    if (reduce || e.target.id === 'sig') return;
+    const t = performance.now();
+    if (t - lastSpark < 50) return;
+    lastSpark = t;
+    addPart({
+      x: e.clientX + rnd(-4, 4), y: e.clientY + rnd(-4, 4),
+      vx: rnd(-0.4, 0.4), vy: rnd(-0.2, 0.3), g: 0.02, drag: 0.98,
+      shape: 'spark', c: pick(['#ffffff', '#ffc2d6', '#e8c48a', '#ff8fb3']),
+      s: rnd(3, 6), life: 38, max: 38
+    });
+  });
+  // Hearts on tap
+  addEventListener('pointerdown', (e) => {
+    if (reduce || e.target.closest('button, .candle, #sig')) return;
+    burst(e.clientX, e.clientY, 9, 'heart');
+  });
+
+  /* ---------- Curtain page transitions ---------- */
+  const curtain = $('#curtain');
+  const T = reduce ? 60 : 900;      // curtain travel time
+  const HOLD = reduce ? 60 : 450;   // time the curtain stays closed
+  let moving = false;
+
+  function go(to, after) {
+    if (moving) return;
+    moving = true;
+    curtain.classList.add('closed');
+    setTimeout(() => {
+      $('.page.active').classList.remove('active');
+      $('#' + to).classList.add('active');
+      window.scrollTo(0, 0);
+      if (after) after();
+      if (to === 'p2' && !reduce) {
+        setTimeout(() => {
+          const box = $('#sign');
+          if ($('#p2').classList.contains('active') && box.getBoundingClientRect().bottom > innerHeight) {
+            box.scrollIntoView({ behavior: 'smooth', block: 'end' });
+          }
+        }, 6400);
+      }
+      setTimeout(() => {
+        curtain.classList.remove('closed');
+        setTimeout(() => { moving = false; }, T);
+      }, HOLD);
+    }, T + 80);
+  }
+
+  /* ---------- Page 1: candles ---------- */
+  const candles = [...document.querySelectorAll('.candle')];
+  const btn = $('#main-btn');
+  const hint = $('#hint');
+  const cake = $('#cake');
+  let locked = false;
+
+  const litCount = () => candles.filter((c) => c.classList.contains('lit')).length;
+
+  function setLit(c, on) {
+    if (c.classList.contains('lit') === on) return;
+    c.classList.toggle('lit', on);
+    c.setAttribute('aria-pressed', String(on));
+  }
+
+  function update() {
+    if (locked) return;
+    const n = litCount();
+    if (n === candles.length) {
+      locked = true;
+      btn.disabled = true;
+      btn.textContent = 'Make a wish\u2026';
+      hint.textContent = 'Close your eyes and make a wish, Tasneem.';
+      cake.classList.add('locked');
+      if (!reduce) {
+        const r = cake.getBoundingClientRect();
+        cannon(r.left + r.width / 2, r.top + r.height * 0.3, -Math.PI / 2, 0.8, 50, 4, 10);
+        burst(r.left + r.width / 2, r.top + r.height * 0.25, 14, 'heart');
+      }
+      setTimeout(() => go('p2'), reduce ? 400 : 2200);
+      return;
+    }
+    btn.textContent = n === 0 ? 'Light the candles' : 'Light the rest';
+    hint.textContent = 'Tap a candle, or use the button.';
+  }
+
+  candles.forEach((c) => {
+    const toggle = () => {
+      if (locked) return;
+      setLit(c, !c.classList.contains('lit'));
+      update();
+    };
+    c.addEventListener('click', toggle);
+    c.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+    });
+  });
+
+  btn.addEventListener('click', () => {
+    if (locked) return;
+    btn.disabled = true;
+    const todo = candles.filter((c) => !c.classList.contains('lit'));
+    todo.forEach((c, i) => setTimeout(() => {
+      setLit(c, true);
+      if (i === todo.length - 1) btn.disabled = false;
+      update();
+    }, i * 380));
+  });
+
+  /* ---------- Page 2: signature pad ---------- */
+  const sc = $('#sig');
+  const sctx = sc.getContext('2d');
+  const pad = $('#pad');
+  const bar = $('#bar');
+  const sigStatus = $('#sig-status');
+  const NEED = 300;   // ink length required (CSS px)
+  const MINW = 90;    // minimum signature width (CSS px)
+  const STATUS_DEFAULT = 'Write your name with a pen or your finger.';
+  let strokes = [], cur = null, inkLen = 0, minX = 1e9, maxX = -1e9, sigDone = false, idleT = null;
+
+  const mid = (a, b) => ({ x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 });
+
+  function inkStyle() {
+    sctx.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue('--ink').trim() || '#5a1d3a';
+    sctx.fillStyle = sctx.strokeStyle;
+    sctx.lineCap = 'round';
+    sctx.lineJoin = 'round';
+  }
+  function seg(p, i) {
+    const s = i === 1 ? p[0] : mid(p[i - 2], p[i - 1]);
+    const e = mid(p[i - 1], p[i]);
+    sctx.lineWidth = p[i - 1].w;
+    sctx.beginPath();
+    sctx.moveTo(s.x, s.y);
+    sctx.quadraticCurveTo(p[i - 1].x, p[i - 1].y, e.x, e.y);
+    sctx.stroke();
+  }
+  function tail(p) {
+    if (p.length < 2) return;
+    const s = mid(p[p.length - 2], p[p.length - 1]);
+    const e = p[p.length - 1];
+    sctx.lineWidth = e.w;
+    sctx.beginPath();
+    sctx.moveTo(s.x, s.y);
+    sctx.lineTo(e.x, e.y);
+    sctx.stroke();
+  }
+  function redraw() {
+    const r = sc.getBoundingClientRect();
+    sctx.clearRect(0, 0, r.width, r.height);
+    inkStyle();
+    strokes.forEach((p) => {
+      if (p.length === 1) { sctx.beginPath(); sctx.arc(p[0].x, p[0].y, 1.3, 0, 6.28); sctx.fill(); }
+      for (let i = 1; i < p.length; i++) seg(p, i);
+      tail(p);
+    });
+  }
+  function sizeSig() {
+    const r = sc.getBoundingClientRect();
+    if (!r.width) return;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    sc.width = Math.round(r.width * dpr);
+    sc.height = Math.round(r.height * dpr);
+    sctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    redraw();
+  }
+  if (window.ResizeObserver) new ResizeObserver(sizeSig).observe(sc);
+  addEventListener('resize', sizeSig);
+
+  const pos = (e) => {
+    const r = sc.getBoundingClientRect();
+    return { x: e.clientX - r.left, y: e.clientY - r.top };
+  };
+  const ready = () => inkLen >= NEED && (maxX - minX) >= MINW;
+
+  function progress() {
+    bar.style.width = Math.min(100, (inkLen / NEED) * 100) + '%';
+    if (inkLen >= NEED) {
+      sigStatus.textContent = (maxX - minX) >= MINW
+        ? 'Lovely. Lift your pen when you are done.'
+        : 'Write your whole name along the line.';
+    }
+  }
+
+  function addPoint(ev) {
+    const pt = pos(ev);
+    const last = cur[cur.length - 1];
+    const d = Math.hypot(pt.x - last.x, pt.y - last.y);
+    if (d < 1.5) return;
+    const dt = Math.max(1, ev.timeStamp - last.t);
+    const v = d / dt;
+    let target = (ev.pointerType === 'pen' && ev.pressure > 0)
+      ? 1.2 + ev.pressure * 3
+      : 3.4 - Math.min(v, 2.2);
+    target = Math.max(1.4, Math.min(3.6, target));
+    const w = last.w * 0.7 + target * 0.3;
+    cur.push({ x: pt.x, y: pt.y, w, t: ev.timeStamp });
+    seg(cur, cur.length - 1);
+    inkLen += d;
+    minX = Math.min(minX, pt.x);
+    maxX = Math.max(maxX, pt.x);
+    progress();
+  }
+
+  sc.addEventListener('pointerdown', (e) => {
+    if (sigDone || moving) return;
+    e.preventDefault();
+    sc.setPointerCapture(e.pointerId);
+    clearTimeout(idleT);
+    const pt = pos(e);
+    cur = [{ x: pt.x, y: pt.y, w: 2.2, t: e.timeStamp }];
+    strokes.push(cur);
+    minX = Math.min(minX, pt.x);
+    maxX = Math.max(maxX, pt.x);
+    inkStyle();
+    sctx.beginPath();
+    sctx.arc(pt.x, pt.y, 1.3, 0, 6.28);
+    sctx.fill();
+  });
+  sc.addEventListener('pointermove', (e) => {
+    if (!cur) return;
+    const evs = e.getCoalescedEvents ? e.getCoalescedEvents() : [];
+    (evs.length ? evs : [e]).forEach(addPoint);
+  });
+  const endStroke = () => {
+    if (!cur) return;
+    tail(cur);
+    cur = null;
+    if (ready()) idleT = setTimeout(finishSig, 1500);
+  };
+  sc.addEventListener('pointerup', endStroke);
+  sc.addEventListener('pointercancel', endStroke);
+
+  function finishSig() {
+    if (sigDone) return;
+    sigDone = true;
+    pad.classList.add('done');
+    sigStatus.textContent = 'Beautiful. Thank you, Tasneem.';
+    setTimeout(() => go('p3', () => setTimeout(finale, HOLD + 700)), 900);
+  }
+
+  function clearSig() {
+    clearTimeout(idleT);
+    strokes = []; cur = null; inkLen = 0; minX = 1e9; maxX = -1e9; sigDone = false;
+    bar.style.width = '0';
+    sigStatus.textContent = STATUS_DEFAULT;
+    pad.classList.remove('done');
+    redraw();
+  }
+  $('#sig-clear').addEventListener('click', () => { if (!sigDone) clearSig(); });
+
+  /* ---------- Page 3 ---------- */
+  $('#again-btn').addEventListener('click', finale);
+
+  $('#restart-btn').addEventListener('click', () => {
+    go('p1', () => {
+      locked = false;
+      candles.forEach((c) => { c.classList.remove('lit'); c.setAttribute('aria-pressed', 'false'); });
+      cake.classList.remove('locked');
+      btn.disabled = false;
+      clearSig();
+      $('#p1').style.setProperty('--base', '1.1s');
+      update();
+    });
+  });
+})();
+</script>
+</body>
+</html>
